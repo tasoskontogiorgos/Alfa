@@ -6,6 +6,7 @@
 package alfa.core;
 
 import alfa.core.runtime.AlfaEnvironment;
+import java.util.Set;
 import org.antlr.v4.runtime.Token;
 
 /**
@@ -17,4 +18,7 @@ public interface EvaluationContext
     public void             setValue( String varName, Object Value );
     public Object           getValue( String varName, Token token );    
     public AlfaEnvironment  getEnvir();
+    public Set< String >    getAllVars();
+    public Statement        getCurrentStatement();
+
 }

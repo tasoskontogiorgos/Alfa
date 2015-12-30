@@ -29,7 +29,7 @@ public class alex extends alfa.core.runtime.BaseAlfaFunction
 	}
 
 	@Override
-	public Object eval( Object ... actuals ) throws Exception
+	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
 		Evaluator evaltor = ( Evaluator )getEvaluator();
 		return evaltor.alex( actuals );

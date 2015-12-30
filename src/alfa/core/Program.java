@@ -21,23 +21,21 @@ import org.antlr.v4.runtime.Token;
 public class Program implements PTreeNode, SymbolTable, EvaluationContext
 {
 
-    private final Object m_null;
-    private final Map< String, Object> m_values;
-    private final Map< String, Exp> m_varDefs;
-    private final List<Statement> m_statements;
-    private AlfaEnvironment m_envir;
+    private final Object                    m_null;
+    private final Map< String, Object>      m_values;
+    private final Map< String, Exp>         m_varDefs;
+    private final List<Statement>           m_statements;
+    private AlfaEnvironment                 m_envir;
+    private Statement                       m_currentStatement;
 
-    private static boolean s_debug;
+    private static boolean                  s_debug;
 
     public static void SetDebug( boolean debug )
     {
         s_debug = debug;
     }
     
-    public static Program CurrentProgram;
-    public static Statement CurrentStatement;
-    
-
+  
     public Program()
     {
         m_statements = new ArrayList();
@@ -48,13 +46,12 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
 
     public void exec( AlfaEnvironment envir )
     {
-        CurrentProgram = this;
-        m_envir = envir;
+         m_envir = envir;
         resolve( this );
         for( Statement s : m_statements )
         {
-            CurrentStatement = s;
-            boolean dbg = s_debug;
+            m_currentStatement = s;
+             boolean dbg = s_debug;
             if( dbg )
             {
                 System.out.println( s );
@@ -65,6 +62,12 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
                 System.out.println( "---> " + o );
             }
         }
+    }
+    
+    @Override
+    public Statement getCurrentStatement()
+    {
+        return m_currentStatement;
     }
 
     public void add( Statement s )

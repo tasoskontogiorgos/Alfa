@@ -91,7 +91,7 @@ public class GenFunction
         
         
         text += "\t" + "@Override" + "\n";
-        text += "\t" + "public Object eval( Object ... actuals ) throws Exception" + "\n";
+        text += "\t" + "public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception" + "\n";
         text += "\t" + "{" + "\n";
         text += "\t\t" + "Evaluator evaltor = ( Evaluator )getEvaluator();\n";
         text += "\t\t" + "return evaltor." + className + "( actuals );\n";

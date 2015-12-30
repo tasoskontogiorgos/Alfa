@@ -92,7 +92,7 @@ public class GenFunctionImpl
         
         
         text += "\t" + "@Override" + "\n";
-        text += "\t" + "public Object eval( Object ... actuals ) throws Exception" + "\n";
+        text += "\t" + "public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception" + "\n";
         text += "\t" + "{" + "\n";
         text += "\t\t" + "throw new RuntimeException( \"Not Implemented ! \");\n";
         text += "\t" + "}" + "\n\n";

@@ -2,9 +2,9 @@ package alfa.core.runtime.impl;
 
 import alfa.core.*;
 
-import alfa.core.runtime.*;
+import org.antlr.v4.runtime.Token;
 
-public class Impl_printVars extends alfa.core.runtime.gen.printVars
+public class Impl_printVars extends alfa.core.runtime.gen.printVars implements SelfEvaluating
 {
     /*
      REG(VAR)* 
@@ -16,20 +16,21 @@ public class Impl_printVars extends alfa.core.runtime.gen.printVars
     }
 
     @Override
-    public Object eval( Object... actuals ) throws Exception
+    public Object eval( alfa.core.EvaluationContext ctx, Object... actuals ) throws Exception
     {
-        Program prog = Program.CurrentProgram;
-        
+        Token token =  ctx.getCurrentStatement().getToken();
         if( actuals.length == 0 )
         {
-            for(String varName : prog.getAllVars()){
-                System.out.println(varName + " : " + prog.getValue( varName, Program.CurrentStatement.getToken()));
+            for( String varName : ctx.getAllVars() )
+            {
+                System.out.println( varName + " : " + ctx.getValue( varName, token ));
             }
         }else
         {
-            for(Object vn : actuals){
+            for( Object vn : actuals )
+            {
                 String varName = vn.toString();
-                System.out.println(varName + " : " + prog.getValue( varName, Program.CurrentStatement.getToken()));
+                System.out.println( varName + " : " + ctx.getValue( varName, token ) );
             }
         }
         return null;

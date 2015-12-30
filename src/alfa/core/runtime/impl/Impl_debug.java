@@ -3,7 +3,6 @@ package alfa.core.runtime.impl;
 
 import alfa.core.*;
 
-import alfa.core.runtime.*;
 
 public class Impl_debug extends alfa.core.runtime.gen.debug
 {
@@ -16,7 +15,7 @@ public class Impl_debug extends alfa.core.runtime.gen.debug
 	}
 
 	@Override
-	public Object eval( Object ... actuals ) throws Exception
+	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
             String u = ( String ) actuals[ 0 ];
             String s  = u.toUpperCase();
@@ -33,6 +32,7 @@ public class Impl_debug extends alfa.core.runtime.gen.debug
                 throw new Exception( "Expecting ON/OFF - got " + u );
             }
 	} 
+
 
 }
 

@@ -8,6 +8,7 @@ package alfa.core.exps;
 import alfa.core.EvaluationContext;
 import alfa.core.Exp;
 import alfa.core.FormalArgSpec;
+import alfa.core.SelfEvaluating;
 import alfa.core.SymbolTable;
 import alfa.core.Types;
 import alfa.core.runtime.AlfaEnvironment;
@@ -115,7 +116,7 @@ public class FuncCall extends BaseExp
         for( int i = 0; i < sz; i++ )
         {
             Exp exp = m_actuals.get( i );
-            if( m_name.equals( "%printVars"))
+            if( m_func instanceof SelfEvaluating)
             {
                 Var var = ( Var ) exp;
                 String varName = var.getName();
@@ -127,7 +128,7 @@ public class FuncCall extends BaseExp
         }
         try
         {
-            return m_func.eval( actuals );
+            return m_func.eval( ctx, actuals );
         } catch( Exception x )
         {
             throw new RuntimeException( x.getMessage() + Util.At( getToken()));

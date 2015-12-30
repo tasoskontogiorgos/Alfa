@@ -16,7 +16,7 @@ public class Impl_tasos2 extends alfa.core.runtime.gen.tasos2
 	}
 
 	@Override
-	public Object eval( Object ... actuals ) throws Exception
+	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
 		throw new RuntimeException( "Not Implemented ! ");
 	}

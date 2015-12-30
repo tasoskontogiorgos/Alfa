@@ -16,7 +16,7 @@ public class Impl_printSchema extends alfa.core.runtime.gen.printSchema
 	}
 
 	@Override
-	public Object eval( Object ... actuals ) throws Exception
+	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
 		throw new RuntimeException( "Not Implemented ! ");
 	}

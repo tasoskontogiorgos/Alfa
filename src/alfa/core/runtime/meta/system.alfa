@@ -1,0 +1,19 @@
+
+%show( VAR )
+%printSchema( VAR )
+
+%save( VAR VAR STR )
+
+%exportCSV( VAR VAR )
+
+%exportAvro( VAR VAR )
+
+%exit( BOOL )
+
+%join( VAR VAR VAR VAR STR )
+%alex(( VAR| NUM ) ( VAR | STR ) NUM? )
+%tasos2( NUM* )
+%tasos3( NUM+ )
+
+%nLinRegression( STR )
+

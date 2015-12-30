@@ -18,5 +18,6 @@ public interface Evaluator extends alfa.core.runtime.AlfaEvaluator
 	public Object tasos3( Object ... actuals ) throws Exception;
 	public Object show( Object ... actuals ) throws Exception;
 	public Object save( Object ... actuals ) throws Exception;
+	public Object debug( Object ... actuals ) throws Exception;
 }
 

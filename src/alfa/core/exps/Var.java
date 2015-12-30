@@ -39,7 +39,7 @@ public class Var extends BaseExp
         Exp e = st.getDefinition( m_name );
         if( e == null )
         {
-            throw new RuntimeException( "Undefined VAR " + m_name + Util.At(  getToken()));
+            throw new RuntimeException( "Undefined VAR " + m_name + Util.At( getToken()));
         }
         m_type = Types.ANY;
     }

@@ -1,7 +1,8 @@
 b = null;
 c = b;
-
+%debug( "ON" );
 AAAA = 1111
+%debug( "OFF" );
 XXX = "asdas"
 a = true;
 

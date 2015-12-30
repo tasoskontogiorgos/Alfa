@@ -73,5 +73,11 @@ public class DefaultEvaluator implements Evaluator
 		throw new Exception( "Not Implemented Yet !");
 	}
 
+	@Override
+	public Object debug( Object ... actuals ) throws Exception
+	{
+		throw new Exception( "Not Implemented Yet !");
+	}
+
 }
 

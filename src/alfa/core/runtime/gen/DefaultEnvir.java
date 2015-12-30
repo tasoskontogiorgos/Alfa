@@ -25,6 +25,7 @@ public class DefaultEnvir extends alfa.core.runtime.AlfaEnvironment
 		registerFunc( new alfa.core.runtime.impl.Impl_tasos3( eval ) );
 		registerFunc( new alfa.core.runtime.impl.Impl_show( eval ) );
 		registerFunc( new alfa.core.runtime.impl.Impl_save( eval ) );
+		registerFunc( new alfa.core.runtime.impl.Impl_debug( eval ) );
 	}
 }
 

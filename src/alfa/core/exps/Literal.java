@@ -31,8 +31,14 @@ public class Literal extends BaseExp
     public Literal( Token token, Object literal, LiteralKind k )
     {
         super( token );
-        m_literal = literal;
         m_kind = k;
+        if( k.equals( LiteralKind.STR ))
+        {
+            m_literal = literal.toString().replaceAll( "\"", "");
+        } else
+        {
+            m_literal = literal;
+        }
     }
     
     public LiteralKind getKind()

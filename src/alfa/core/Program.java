@@ -19,38 +19,57 @@ import org.antlr.v4.runtime.Token;
  */
 public class Program implements PTreeNode, SymbolTable, EvaluationContext
 {
-    private final Object                m_null;
-    private final Map< String, Object > m_values;
-    private final Map< String, Exp >    m_varDefs;
-    private final List<Statement>       m_statements;
-    private  AlfaEnvironment            m_envir;
-    
-    public Program()
+
+    private final Object m_null;
+    private final Map< String, Object> m_values;
+    private final Map< String, Exp> m_varDefs;
+    private final List<Statement> m_statements;
+    private AlfaEnvironment m_envir;
+
+    private static boolean s_debug;
+
+    public static void SetDebug( boolean debug )
     {
-        m_statements =  new ArrayList();
-        m_varDefs =     new HashMap();
-        m_values =      new HashMap();
-        m_null =        new Object();
+        s_debug = debug;
     }
     
+    public static Program CurrentProgram;
+    public static Statement CurrentStatement;
+    
+
+    public Program()
+    {
+        m_statements = new ArrayList();
+        m_varDefs = new HashMap();
+        m_values = new HashMap();
+        m_null = new Object();
+    }
+
     public void exec( AlfaEnvironment envir )
     {
+        CurrentProgram = this;
         m_envir = envir;
         resolve( this );
         for( Statement s : m_statements )
         {
-            System.out.println( s );
+            CurrentStatement = s;
+            if( s_debug )
+            {
+                System.out.println( s );
+            }
             Object o = s.eval( this );
-            System.out.println( "---> " + o );
+            if( s_debug )
+            {
+                System.out.println( "---> " + o );
+            }
         }
     }
-    
-   
+
     public void add( Statement s )
     {
-        m_statements.add(  s );
+        m_statements.add( s );
     }
-            
+
     @Override
     public Token getToken()
     {
@@ -65,35 +84,35 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
             s.resolve( st );
         }
     }
-     
+
     @Override
     public AlfaEnvironment getEnvir()
     {
         return m_envir;
     }
-       
+
     @Override
     public void define( String varName, Exp definition )
     {
         varName = varName.toLowerCase();
-        m_varDefs.put(  varName, definition );
+        m_varDefs.put( varName, definition );
     }
-    
+
     @Override
-    public Exp  getDefinition( String varName )
+    public Exp getDefinition( String varName )
     {
         varName = varName.toLowerCase();
-        return m_varDefs.get(  varName );
+        return m_varDefs.get( varName );
     }
-    
+
     @Override
     public String toString()
     {
         String str = "";
-        
+
         for( Statement s : m_statements )
         {
-            str += s +"\n";
+            str += s + "\n";
         }
         return str;
     }
@@ -111,11 +130,11 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
     @Override
     public Object getValue( String varName, Token token )
     {
-        if( !m_values.containsKey( varName ))
+        if(  ! m_values.containsKey( varName ) )
         {
-            throw new RuntimeException( "Unset variable " + varName + Util.At( token ));
+            throw new RuntimeException( "Unset variable " + varName + Util.At( token ) );
         }
-        Object v =  m_values.get(  varName );
+        Object v = m_values.get( varName );
         if( v == m_null )
         {
             return null;
@@ -129,6 +148,4 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
         throw new UnsupportedOperationException( "Not supported yet." ); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-    
 }

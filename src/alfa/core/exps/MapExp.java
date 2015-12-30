@@ -65,7 +65,7 @@ public class MapExp extends BaseExp
          {
              Object key = pair.getLeft().eval( ctx );
              Object val = pair.getRight().eval( ctx );
-             m.put(  key, val);
+             m.put( key, val);
          }
          return m;
     }

@@ -18,13 +18,13 @@ public class Types
 {
     static private  Map< String, Type > s_all;
     
-    static public NULL NULL;
-    static public ANY ANY;
-    static public NUM NUM;
-    static public STR STR;
-    static public BOOL BOOL;
-    static public MAP MAP;
-    static public PAIRMAP PAIRMAP;
+    static public NULL          NULL;
+    static public ANY           ANY;
+    static public NUM           NUM;
+    static public STR           STR;
+    static public BOOL          BOOL;
+    static public MAP           MAP;
+    static public PAIRMAP       PAIRMAP;
     static public LIST LIST;
     
     static private Map< String, Type > all()

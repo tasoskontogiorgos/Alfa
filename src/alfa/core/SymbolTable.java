@@ -6,6 +6,7 @@
 package alfa.core;
 
 import alfa.core.runtime.AlfaEnvironment;
+import java.util.Set;
 
 /**
  *
@@ -16,5 +17,6 @@ public interface SymbolTable
     public void             define( String varName, Exp definition );
     public Exp              getDefinition( String varName );
     public AlfaEnvironment  getEnvir();
+    public Set< String >    getAllVars();
     
 }

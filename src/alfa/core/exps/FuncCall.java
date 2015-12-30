@@ -111,10 +111,19 @@ public class FuncCall extends BaseExp
     {
         int sz = m_actuals.size();
         Object[] actuals = new Object[ sz ];
+        
         for( int i = 0; i < sz; i++ )
         {
             Exp exp = m_actuals.get( i );
-            actuals[ i ] = ( exp.eval( ctx));
+            if( m_name.equals( "%printVars"))
+            {
+                Var var = ( Var ) exp;
+                String varName = var.getName();
+                actuals[ i ] = varName;
+            } else
+            {
+                actuals[ i ] = ( exp.eval( ctx));
+            }
         }
         try
         {

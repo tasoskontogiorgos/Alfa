@@ -9,6 +9,8 @@ a = true;
 %tasos3( 3.14 );
 %tasos3( 3.14 100 );
 
+%printVars(  )
+
 /*
 %tasos2( 1, 2, 4 );
 %tasos2(  );

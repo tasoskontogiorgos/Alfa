@@ -8,6 +8,24 @@ import alfa.core.runtime.*;
 public class DefaultEvaluator implements Evaluator
 {
 	@Override
+	public Object exportCSV( Object ... actuals ) throws Exception
+	{
+		throw new Exception( "Not Implemented Yet !");
+	}
+
+	@Override
+	public Object tasos2( Object ... actuals ) throws Exception
+	{
+		throw new Exception( "Not Implemented Yet !");
+	}
+
+	@Override
+	public Object tasos3( Object ... actuals ) throws Exception
+	{
+		throw new Exception( "Not Implemented Yet !");
+	}
+
+	@Override
 	public Object printSchema( Object ... actuals ) throws Exception
 	{
 		throw new Exception( "Not Implemented Yet !");
@@ -32,13 +50,7 @@ public class DefaultEvaluator implements Evaluator
 	}
 
 	@Override
-	public Object exportCSV( Object ... actuals ) throws Exception
-	{
-		throw new Exception( "Not Implemented Yet !");
-	}
-
-	@Override
-	public Object tasos2( Object ... actuals ) throws Exception
+	public Object printVars( Object ... actuals ) throws Exception
 	{
 		throw new Exception( "Not Implemented Yet !");
 	}
@@ -51,12 +63,6 @@ public class DefaultEvaluator implements Evaluator
 
 	@Override
 	public Object nLinRegression( Object ... actuals ) throws Exception
-	{
-		throw new Exception( "Not Implemented Yet !");
-	}
-
-	@Override
-	public Object tasos3( Object ... actuals ) throws Exception
 	{
 		throw new Exception( "Not Implemented Yet !");
 	}

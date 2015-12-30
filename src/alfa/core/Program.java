@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.antlr.v4.runtime.Token;
 
 /**
@@ -53,12 +54,13 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
         for( Statement s : m_statements )
         {
             CurrentStatement = s;
-            if( s_debug )
+            boolean dbg = s_debug;
+            if( dbg )
             {
                 System.out.println( s );
             }
             Object o = s.eval( this );
-            if( s_debug )
+            if( dbg )
             {
                 System.out.println( "---> " + o );
             }
@@ -94,14 +96,12 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
     @Override
     public void define( String varName, Exp definition )
     {
-        varName = varName.toLowerCase();
         m_varDefs.put( varName, definition );
     }
 
     @Override
     public Exp getDefinition( String varName )
     {
-        varName = varName.toLowerCase();
         return m_varDefs.get( varName );
     }
 
@@ -146,6 +146,12 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
     public Object eval( EvaluationContext ctx )
     {
         throw new UnsupportedOperationException( "Not supported yet." ); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Set<String> getAllVars()
+    {
+        return this.m_varDefs.keySet();
     }
 
 }

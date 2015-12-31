@@ -21,22 +21,7 @@ AList = [ 1, 2, 3, "four" ];
 
 ABool = 44 :: AList;
 
+SM = SelfModExample( Red, Alex )
+
+
 %printVars(  )
-/*
-%tasos2( 1, 2, 4 );
-%tasos2(  );
-%tasos3( 3.14 );
-
-
-TASOS = %alex( AAAA, "222"  );
-
-%save( AAAA, XXX, "aaa" );
-
-Tasos = %show( XXX );
-
-%printSchema( Tasos );
-
- 
-%nLinRegression( "ABC" );
-
-*/

@@ -1,4 +1,4 @@
-// Generated from /Users/tdk/Dev/alex/Alpha/src/alfa/parser/Alfa.g4 by ANTLR 4.5
+// Generated from /Users/tdk/Dev/Alpha/Alfa/src/alfa/parser/Alfa.g4 by ANTLR 4.5
 package alfa.parser.gen;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;

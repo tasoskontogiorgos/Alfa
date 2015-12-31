@@ -9,6 +9,7 @@ import alfa.core.EvaluationContext;
 import alfa.core.Exp;
 import alfa.core.FormalArgSpec;
 import alfa.core.SelfEvaluating;
+import alfa.core.SelfModifyingActuals;
 import alfa.core.SymbolTable;
 import alfa.core.Types;
 import alfa.core.runtime.AlfaEnvironment;
@@ -24,7 +25,7 @@ import org.antlr.v4.runtime.Token;
  */
 public class FuncCall extends BaseExp
 {
-    private final List< Exp >   m_actuals;
+    private       List< Exp >   m_actuals;
     private final String        m_name;   
     private AlfaFunction        m_func;
     
@@ -77,6 +78,16 @@ public class FuncCall extends BaseExp
     {
         AlfaEnvironment e = st.getEnvir();
         m_func = e.getFuncdefinition( m_name, getToken() );
+        if( m_func instanceof SelfModifyingActuals )
+        {
+            try
+            {
+                m_actuals  = ( (SelfModifyingActuals) m_func).modify( st, m_actuals );
+            } catch( Exception x )
+            {
+                throw new RuntimeException( x.getMessage() + Util.At( getToken()) );
+            }
+        }
         for( Exp exp : m_actuals )
         {
             exp.resolve( st );

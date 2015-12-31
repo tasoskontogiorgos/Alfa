@@ -16,6 +16,7 @@ public class DefaultEnvir extends alfa.core.runtime.AlfaEnvironment
 		registerFunc( new alfa.core.runtime.impl.Impl_printSchema(  ) );
 		registerFunc( new alfa.core.runtime.impl.Impl_join(  ) );
 		registerFunc( new alfa.core.runtime.impl.Impl_alex(  ) );
+		registerFunc( new alfa.core.runtime.impl.Impl_SelfModExample(  ) );
 		registerFunc( new alfa.core.runtime.impl.Impl_exportAvro(  ) );
 		registerFunc( new alfa.core.runtime.impl.Impl_printVars(  ) );
 		registerFunc( new alfa.core.runtime.impl.Impl_SystemIN(  ) );

@@ -23,3 +23,5 @@
 %printVars( VAR* )
 
 SystemIN( ( VAR | STR | BOOL | NUM | MAP | PAIRMAP | LIST ) ( VAR | STR | BOOL | NUM | MAP | PAIRMAP | LIST ) )
+
+SelfModExample( STR STR )

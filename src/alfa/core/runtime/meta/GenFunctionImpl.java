@@ -81,9 +81,8 @@ public class GenFunctionImpl
         text += "\t" + formals() + "\n";
         text += "*/" + "\n";
         
-        text += "\t" + "public " + className + "( alfa.core.runtime.AlfaEvaluator e )" + "\n";
+        text += "\t" + "public " + className + "(  )" + "\n";
         text += "\t" + "{" + "\n";
-        text += "\t\t" + "super( e );\n";
         text += "\t" + "}" + "\n\n";
         
         

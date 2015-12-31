@@ -7,9 +7,8 @@ import alfa.core.runtime.*;
 
 public class nLinRegression extends alfa.core.runtime.BaseAlfaFunction
 {
-	public nLinRegression( alfa.core.runtime.AlfaEvaluator e )
+	public nLinRegression(  )
 	{
-		super( e );
 	}
 
 	@Override
@@ -29,8 +28,7 @@ public class nLinRegression extends alfa.core.runtime.BaseAlfaFunction
 	@Override
 	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
-		Evaluator evaltor = ( Evaluator )getEvaluator();
-		return evaltor.nLinRegression( actuals );
+		throw new RuntimeException( "Not Implemented ! ");
 	}
 
 }

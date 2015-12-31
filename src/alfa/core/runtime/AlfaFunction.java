@@ -14,7 +14,6 @@ import java.util.List;
  */
 public interface AlfaFunction
 {
-    public AlfaEvaluator            getEvaluator();
     public String                   getName();
     public List< FormalArgSpec >    getFormals();
     public Object                   eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception;

@@ -9,7 +9,6 @@ import alfa.core.Program;
 import alfa.core.Types;
 import alfa.core.runtime.AlfaEnvironment;
 import alfa.core.runtime.gen.DefaultEnvir;
-import alfa.core.runtime.gen.DefaultEvaluator;
 import alfa.parser.AlfaParse;
 
 /**
@@ -21,7 +20,7 @@ public class Runner
     public static void main( String ... args )
     {
         AlfaEnvironment envir = new DefaultEnvir();
-        envir.init( new DefaultEvaluator());
+        envir.init();
         Program p = AlfaParse.Parse( "src/alfa/tests/test.alfa" );
         p.exec( envir );
     }

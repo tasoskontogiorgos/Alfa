@@ -10,9 +10,8 @@ public class Impl_tasos2 extends alfa.core.runtime.gen.tasos2
 /*
 	REG(NUM)* 
 */
-	public Impl_tasos2( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_tasos2(  )
 	{
-		super( e );
 	}
 
 	@Override

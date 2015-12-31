@@ -10,9 +10,8 @@ public class Impl_nLinRegression extends alfa.core.runtime.gen.nLinRegression
 /*
 	STR 
 */
-	public Impl_nLinRegression( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_nLinRegression(  )
 	{
-		super( e );
 	}
 
 	@Override

@@ -7,9 +7,8 @@ import alfa.core.runtime.*;
 
 public class join extends alfa.core.runtime.BaseAlfaFunction
 {
-	public join( alfa.core.runtime.AlfaEvaluator e )
+	public join(  )
 	{
-		super( e );
 	}
 
 	@Override
@@ -33,8 +32,7 @@ public class join extends alfa.core.runtime.BaseAlfaFunction
 	@Override
 	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
-		Evaluator evaltor = ( Evaluator )getEvaluator();
-		return evaltor.join( actuals );
+		throw new RuntimeException( "Not Implemented ! ");
 	}
 
 }

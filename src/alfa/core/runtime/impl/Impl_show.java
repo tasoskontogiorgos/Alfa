@@ -10,9 +10,8 @@ public class Impl_show extends alfa.core.runtime.gen.show
 /*
 	VAR 
 */
-	public Impl_show( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_show(  )
 	{
-		super( e );
 	}
 
 	@Override

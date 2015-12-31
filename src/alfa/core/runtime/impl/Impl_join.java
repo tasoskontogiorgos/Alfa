@@ -10,9 +10,8 @@ public class Impl_join extends alfa.core.runtime.gen.join
 /*
 	VAR VAR VAR VAR STR 
 */
-	public Impl_join( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_join(  )
 	{
-		super( e );
 	}
 
 	@Override

@@ -10,9 +10,8 @@ public class Impl_exportCSV extends alfa.core.runtime.gen.exportCSV
 /*
 	VAR VAR 
 */
-	public Impl_exportCSV( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_exportCSV(  )
 	{
-		super( e );
 	}
 
 	@Override

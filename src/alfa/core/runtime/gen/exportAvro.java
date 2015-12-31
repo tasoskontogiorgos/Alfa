@@ -7,9 +7,8 @@ import alfa.core.runtime.*;
 
 public class exportAvro extends alfa.core.runtime.BaseAlfaFunction
 {
-	public exportAvro( alfa.core.runtime.AlfaEvaluator e )
+	public exportAvro(  )
 	{
-		super( e );
 	}
 
 	@Override
@@ -30,8 +29,7 @@ public class exportAvro extends alfa.core.runtime.BaseAlfaFunction
 	@Override
 	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
-		Evaluator evaltor = ( Evaluator )getEvaluator();
-		return evaltor.exportAvro( actuals );
+		throw new RuntimeException( "Not Implemented ! ");
 	}
 
 }

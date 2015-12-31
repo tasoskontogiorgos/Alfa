@@ -10,9 +10,8 @@ public class Impl_exit extends alfa.core.runtime.gen.exit
 /*
 	BOOL 
 */
-	public Impl_exit( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_exit(  )
 	{
-		super( e );
 	}
 
 	@Override

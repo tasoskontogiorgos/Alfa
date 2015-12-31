@@ -25,8 +25,7 @@ public class GenFunctions
             GenFunctionImpl impl = new GenFunctionImpl( fd );
             impl.gen();
         }
-        
-        new GenEvaluator().gen();
+        new GenEnvir().gen();
         
     }
 }

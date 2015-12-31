@@ -10,9 +10,8 @@ public class Impl_alex extends alfa.core.runtime.gen.alex
 /*
 	(VAR|NUM) (VAR|STR) REG(NUM)? 
 */
-	public Impl_alex( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_alex(  )
 	{
-		super( e );
 	}
 
 	@Override

@@ -10,9 +10,8 @@ public class Impl_exportAvro extends alfa.core.runtime.gen.exportAvro
 /*
 	VAR VAR 
 */
-	public Impl_exportAvro( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_exportAvro(  )
 	{
-		super( e );
 	}
 
 	@Override

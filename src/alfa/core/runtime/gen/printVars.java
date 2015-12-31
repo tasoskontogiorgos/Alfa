@@ -7,9 +7,8 @@ import alfa.core.runtime.*;
 
 public class printVars extends alfa.core.runtime.BaseAlfaFunction
 {
-	public printVars( alfa.core.runtime.AlfaEvaluator e )
+	public printVars(  )
 	{
-		super( e );
 	}
 
 	@Override
@@ -29,8 +28,7 @@ public class printVars extends alfa.core.runtime.BaseAlfaFunction
 	@Override
 	public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception
 	{
-		Evaluator evaltor = ( Evaluator )getEvaluator();
-		return evaltor.printVars( actuals );
+		throw new RuntimeException( "Not Implemented ! ");
 	}
 
 }

@@ -11,15 +11,6 @@ package alfa.core.runtime;
  */
 public abstract class BaseAlfaFunction implements AlfaFunction
 {
-    private final AlfaEvaluator m_eval;
     
-    public BaseAlfaFunction( AlfaEvaluator e )    
-    {
-        m_eval = e;
-    }
     
-    public AlfaEvaluator getEvaluator()
-    {
-        return m_eval;
-    }
 }

@@ -10,9 +10,8 @@ public class Impl_tasos3 extends alfa.core.runtime.gen.tasos3
      REG(NUM)+ 
      */
 
-    public Impl_tasos3( alfa.core.runtime.AlfaEvaluator e )
+    public Impl_tasos3()
     {
-        super( e );
     }
 
     @Override
@@ -22,7 +21,7 @@ public class Impl_tasos3 extends alfa.core.runtime.gen.tasos3
         double r = 0;
         for( Object o : actuals )
         {
-            r +=  ( Double ) o ;
+            r += ( Double ) o;
         }
         return r;
     }

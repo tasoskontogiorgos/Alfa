@@ -10,9 +10,8 @@ public class Impl_save extends alfa.core.runtime.gen.save
 /*
 	VAR VAR STR 
 */
-	public Impl_save( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_save(  )
 	{
-		super( e );
 	}
 
 	@Override

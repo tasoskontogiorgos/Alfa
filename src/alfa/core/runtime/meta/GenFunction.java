@@ -63,9 +63,8 @@ public class GenFunction
         text += "public class " + className + " extends alfa.core.runtime.BaseAlfaFunction"  + "\n";
         text += "{" + "\n";
         
-        text += "\t" + "public " + className + "( alfa.core.runtime.AlfaEvaluator e )" + "\n";
+        text += "\t" + "public " + className + "(  )" + "\n";
         text += "\t" + "{" + "\n";
-        text += "\t\t" + "super( e );\n";
         text += "\t" + "}" + "\n\n";
         
         
@@ -93,8 +92,7 @@ public class GenFunction
         text += "\t" + "@Override" + "\n";
         text += "\t" + "public Object eval( alfa.core.EvaluationContext ctx, Object ... actuals ) throws Exception" + "\n";
         text += "\t" + "{" + "\n";
-        text += "\t\t" + "Evaluator evaltor = ( Evaluator )getEvaluator();\n";
-        text += "\t\t" + "return evaltor." + className + "( actuals );\n";
+        text += "\t\t" + "throw new RuntimeException( \"Not Implemented ! \");\n";
         text += "\t" + "}" + "\n\n";
         
         text += "}" + "\n";

@@ -10,9 +10,8 @@ public class Impl_printSchema extends alfa.core.runtime.gen.printSchema
 /*
 	VAR 
 */
-	public Impl_printSchema( alfa.core.runtime.AlfaEvaluator e )
+	public Impl_printSchema(  )
 	{
-		super( e );
 	}
 
 	@Override

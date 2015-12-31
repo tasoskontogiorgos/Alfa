@@ -15,12 +15,12 @@ import java.io.PrintWriter;
  *
  * @author tdk
  */
-public class GenEvaluator
+public class GenEnvir
 {
 
  
  
-    public GenEvaluator(   )
+    public GenEnvir(   )
     {
     }
 
@@ -104,17 +104,14 @@ public class GenEvaluator
         text += "{" + "\n";
         
         text += "\t@Override\n";
-        text += "\tpublic void init( AlfaEvaluator eval )\n";
+        text += "\tpublic void init(  )\n";
         text += "\t{\n";
-        text += "\t\tif( ( eval != null ) && !( eval instanceof Evaluator) )\n";
-        text += "\t\t{\n";
-        text += "\t\t  throw new RuntimeException(\"Invalid Evaluator !\");\n";
-        text += "\t\t}\n";
+
         for( FuncDeclaration fd : FuncDeclaration.GetAll().values())
         {
             String javaName = fd.getName().replaceAll( "%", "" );
             
-            text += "\t\tregisterFunc( new alfa.core.runtime.impl.Impl_" +javaName + "( eval ) );\n";
+            text += "\t\tregisterFunc( new alfa.core.runtime.impl.Impl_" +javaName + "(  ) );\n";
          }
         text += "\t}\n";
         text += "}" + "\n";
@@ -127,8 +124,8 @@ public class GenEvaluator
     {
         try
         {
-            _genIfc();
-            _genImpl();
+           // _genIfc();
+          //  _genImpl();
             _genEnvir();
         }catch( Exception x )
         {

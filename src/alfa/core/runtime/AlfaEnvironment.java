@@ -46,6 +46,6 @@ public abstract class AlfaEnvironment
         return m_all.containsKey( name );
     }
     
-    public abstract void init( AlfaEvaluator eval ); 
+    public abstract void init(  ); 
     
 }

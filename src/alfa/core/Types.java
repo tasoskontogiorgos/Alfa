@@ -16,6 +16,10 @@ import org.antlr.v4.runtime.Token;
  */
 public class Types
 {
+    static
+    {
+        InitTypes();
+    }
     static private  Map< String, Type > s_all;
     
     static public NULL          NULL;

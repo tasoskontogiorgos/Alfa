@@ -34,6 +34,7 @@ public class Conditional extends BaseExp
          m_pred.resolve( st );
          m_true.resolve( st );
          m_false.resolve( st );
+         // TODO: not type check here - regretably left for eval
     }
     
     @Override
@@ -41,6 +42,19 @@ public class Conditional extends BaseExp
     {
         return "" + m_pred + " ? (" + m_true + ") : (" + m_false + ")";
     }
-
+ 
+    @Override
+    public Object eval( EvaluationContext ctx )
+    {
+        Boolean cond = ( Boolean ) m_pred.eval( ctx );
+        if( cond )
+        {
+            return m_true.eval( ctx );
+        } else
+        {
+            return m_false.eval(  ctx );
+        }
+        
+    }
     
 }

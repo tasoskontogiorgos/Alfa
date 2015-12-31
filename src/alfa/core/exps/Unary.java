@@ -31,6 +31,7 @@ public class Unary extends BaseExp
     @Override
     public void resolve( SymbolTable st )
     {
+        // TODO: for now I assume that the only unary is NOT (!)
         m_under.resolve( st );
         // TODO: For now all unary are boolean - that may change
         m_type = Types.BOOL;
@@ -42,6 +43,19 @@ public class Unary extends BaseExp
         return "" + m_oper + "(" + m_under + ")";
     }
 
-   
+   @Override
+    public Object eval( EvaluationContext ctx )
+    {
+        // TODO: for now I assume that the only unary is NOT (!)
+        Boolean u = ( Boolean ) m_under.eval( ctx );
+        if( u )
+        {
+            return Boolean.FALSE;
+        } else
+        {
+            return Boolean.TRUE;
+        }
+    }
+
      
 }

@@ -20,7 +20,6 @@ public class Runner
 {
     public static void main( String ... args )
     {
-        Types.InitTypes();
         AlfaEnvironment envir = new DefaultEnvir();
         envir.init( new DefaultEvaluator());
         Program p = AlfaParse.Parse( "src/alfa/tests/test.alfa" );

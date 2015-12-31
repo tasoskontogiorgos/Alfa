@@ -1,8 +1,9 @@
 package alfa.core.runtime.impl;
 
+import alfa.core.SelfEvaluating;
 import org.antlr.v4.runtime.Token;
 
-public class Impl_printVars extends alfa.core.runtime.gen.printVars
+public class Impl_printVars extends alfa.core.runtime.gen.printVars implements SelfEvaluating
 {
     /*
      REG(VAR)* 

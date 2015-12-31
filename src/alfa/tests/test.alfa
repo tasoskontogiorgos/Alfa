@@ -15,10 +15,13 @@ a = true;
 Map = { "A" : "RED"  "B" : "Green" }
 PairMap = { 1 _ 2 : "RED"  3 _ 4 : "Green" }
 
+AList = [ 1, 2, 3, "four" ];
+
+
+
+ABool = 44 :: AList;
 
 %printVars(  )
-
-
 /*
 %tasos2( 1, 2, 4 );
 %tasos2(  );

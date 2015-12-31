@@ -9,6 +9,7 @@ import alfa.core.EvaluationContext;
 import alfa.core.Exp;
 import alfa.core.SymbolTable;
 import alfa.core.Types;
+import alfa.core.runtime.AlfaFunction;
 import alfa.util.Util;
 import org.antlr.v4.runtime.Token;
 
@@ -42,6 +43,7 @@ public class Binary extends BaseExp
     private final Exp m_left;
     private final Exp m_right;
     private final BinOp  m_binOp;
+    private AlfaFunction m_SystemIN;
 
     public Binary( Token token, Exp left, Exp right, String oper )
     {
@@ -67,6 +69,10 @@ public class Binary extends BaseExp
     @Override
     public void resolve( SymbolTable st )
     {
+        if( m_binOp.equals( BinOp.in))
+        {
+            m_SystemIN = st.getEnvir().getFuncdefinition( "SystemIN", getToken() );
+        }
         m_left.resolve( st );
         m_right.resolve( st );
         
@@ -83,7 +89,14 @@ public class Binary extends BaseExp
         // TODO: handle IN operator
         if( m_binOp.equals( BinOp.in ))
         {
-            throw new RuntimeException( "Operator IN (::) not implemented yet "  + Util.At( getToken() ));
+            Object[] acts = new Object[]{ m_left, m_right };
+            try
+            {
+                return m_SystemIN.eval( ctx, acts );
+            } catch( Exception x )
+            {
+                throw new RuntimeException( "Failed to evaluate IN : " + x.getMessage()  + Util.At( getToken() ));
+            }
         }
         double l = ( Double )m_left.eval( ctx );
         double r = ( Double )m_right.eval( ctx );

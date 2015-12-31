@@ -71,11 +71,23 @@ public class AlfaProductions extends AlfaBaseVisitor< Void>
         AlfaParse.Parse( fileNme );
         return visitChildren( ctx );
     }
-
-     
-
-     
+ 
   
+    public Exp convert( AlfaParser.NumContext ctx )
+    {
+        if( ctx.IntegerLiteral() != null )
+        {
+            return new Literal( ctx.start, ctx.IntegerLiteral().getText(), Literal.LiteralKind.NUM );
+        }
+        if( ctx.FloatingPointLiteral() != null )
+        {
+            return new Literal( ctx.start, ctx.FloatingPointLiteral().getText(), Literal.LiteralKind.NUM );
+        }
+                
+        throw new RuntimeException( "Illegal State " + Util.At( ctx.start ) );
+
+    }
+    
     public Exp convert( AlfaParser.LiteralContext ctx )
     {
         if( ctx.BooleanLiteral() != null )
@@ -120,6 +132,19 @@ public class AlfaProductions extends AlfaBaseVisitor< Void>
         }
         return m;
     }
+    
+    Exp convert( AlfaParser.PairmapContext ctx )
+    {
+        PairMapExp m = new PairMapExp( ctx.start );
+        for( int i = 0; i < ctx.exp().size(); i += 1 )
+        {
+            Exp k1 = convert( ctx.num( i*2 ) );
+            Exp k2 = convert( ctx.num( i*2+1 ) );
+            Exp val = convert( ctx.exp( i ) );
+            m.add( k1, k2, val );
+        }
+        return m;
+    }
 
     Exp convert( AlfaParser.ListContext ctx )
     {
@@ -158,6 +183,11 @@ public class AlfaProductions extends AlfaBaseVisitor< Void>
         {
             return convert( ctx.map() );
         }
+        if( ctx.pairmap()!= null )
+        {
+            return convert( ctx.pairmap());
+        }
+        
         if( ctx.list() != null )
         {
             return convert( ctx.list() );
@@ -178,7 +208,7 @@ public class AlfaProductions extends AlfaBaseVisitor< Void>
             return convert( ctx.exp( 0 ));
         }
 
-        return null;
+        throw new RuntimeException( "Illegal State " + Util.At( ctx.start ) );
     }
 
 }

@@ -157,4 +157,10 @@ public class Program implements PTreeNode, SymbolTable, EvaluationContext
         return this.m_varDefs.keySet();
     }
 
+    @Override
+    public boolean hasValue( String varName )
+    {
+        return m_values.containsKey( varName );
+    }
+
 }

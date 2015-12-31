@@ -20,7 +20,13 @@ public class Impl_printVars extends alfa.core.runtime.gen.printVars
         {
             for( String varName : ctx.getAllVars() )
             {
-                System.out.println( varName + " : " + ctx.getValue( varName, token ) );
+                if( ctx.hasValue( varName ))
+                {
+                    System.out.println( varName + " : " + ctx.getValue( varName, token ) );
+                } else
+                {
+                    System.out.println( varName + " has not yet assinged a value ... " );
+                }
             }
         }else
         {

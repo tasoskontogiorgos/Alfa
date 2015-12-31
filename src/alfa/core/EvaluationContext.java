@@ -17,6 +17,7 @@ public interface EvaluationContext
 {
     public void             setValue( String varName, Object Value );
     public Object           getValue( String varName, Token token );    
+    public boolean          hasValue( String varName  );    
     public AlfaEnvironment  getEnvir();
     public Set< String >    getAllVars();
     public Statement        getCurrentStatement();

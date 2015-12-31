@@ -11,6 +11,14 @@ a = true;
 
 %printVars(  )
 
+
+Map = { "A" : "RED"  "B" : "Green" }
+PairMap = { 1 _ 2 : "RED"  3 _ 4 : "Green" }
+
+
+%printVars(  )
+
+
 /*
 %tasos2( 1, 2, 4 );
 %tasos2(  );

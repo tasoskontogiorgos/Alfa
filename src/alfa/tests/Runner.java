@@ -5,11 +5,7 @@
  */
 package alfa.tests;
 
-import alfa.core.Program;
-import alfa.core.Types;
-import alfa.core.runtime.AlfaEnvironment;
-import alfa.core.runtime.gen.DefaultEnvir;
-import alfa.parser.AlfaParse;
+import alfa.Tool;
 
 /**
  *
@@ -17,11 +13,8 @@ import alfa.parser.AlfaParse;
  */
 public class Runner
 {
-    public static void main( String ... args )
+    public static void main( String ... args ) throws Exception
     {
-        AlfaEnvironment envir = new DefaultEnvir();
-        envir.init();
-        Program p = AlfaParse.Parse( "src/alfa/tests/test.alfa" );
-        p.exec( envir );
+        new Tool().exec( "src/alfa/tests/test.alfa" );
     }
 }

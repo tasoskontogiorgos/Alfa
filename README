@@ -1,0 +1,88 @@
+
+To evaluate an alfa source in a source file <fileName.alfa> :
+
+    try
+    {
+        new alfa.Tool().exec( <fileName.alfa> );
+    } catch ( Execption x )
+    {
+        // ... report
+    }
+
+Example:
+
+    src/alfa/tests/Runner.java
+
+
+Design:
+
+    Alfa in an interpreter.
+    
+        - parses the input file:
+            grammar in src/alfa/parser/Alfa.g4 and src/alfa/parser/AlfaLexer.g4
+            alntlr called by src/alfa/parser/RunAntlr.java
+        
+        - converts the Antlr tree into the Alfa parser tree 
+            by a Visitor converter in src/alfa/parser/AlfaProductions.java
+            The visitor assembles the parse tree into an object of type alfa.core.Program 
+
+        - resolves the parse tree
+            this phase finds problems such as: unkown vars, illegal args, unknown function names, etc.
+            recurses into all stetements and expressions by calling 
+                    resolve( SymbolTable st )
+            The SymbolTable is provided by the Program
+
+        - executes the statements using alfa.core.EvaluationContext provided by the Program object
+            Execution only starts after the resolution process asserts no errors
+
+    The available functions are predefined and are found in 
+
+            alfa.core.runtime.gen.DefaultEnvir
+
+            Functions implement alfa.core.runtime.AlfaFunction and have dual purpose:
+                - at resolution time they provide the definition of the function
+                - at execution time they implement the evaluation of the function
+
+    The environment is auto generated:
+            Auto gen functionality is found in src/alfa/core/runtime/meta
+            - a simple parser src/alfa/core/runtime/meta/parser
+            - a gen class src/alfa/core/runtime/meta/GenFunctions.java
+
+            Functions are generated from src/alfa/core/runtime/meta/system.alfa
+
+            When GenFunctions is executued creates:
+                src/alfa/core/runtime/gen
+                src/alfa/core/runtime/impl
+             The directory gen is always regenned
+             The directory impl will not override existing files
+                in impl we provide hand written implementation of the functions declared in system.alfa
+
+    NOTE:
+
+        if you change Alfa.g4 you need to run src/alfa/parser/RunAntlr.java
+        if you change Meta.g4 you need to run src/alfa/core/runtime/meta/parser/RunAntlr.java
+
+        Evaluation:
+        
+        Function call is executed in alfa.core.exps.FunctionCall.eval( ... )
+        The default behavior is: evaluate all actuals args, create an array of actual values and pass it to the function
+        But if the function implements 
+                alfa.core.SelfEvaluating 
+        interface, the unevaluated expressions are passed 
+        givin the function full control if their evaluation, example %printVars()
+
+
+        Resolution:
+
+        Actual arguments are resolved in alfa.core.exps.FunctionCall.resolve( ... ) 
+        If the function implements 
+                alfa.core.SelfModifyingActuals
+        interface, prior to resolution the function is given a chance to modify the expressions
+        For example:
+
+            %join( ...., inner, ... )
+
+        the function can convert the VAR inner to a literal "inner" ( since otherwise inner could be undefined var, or 
+        if defined its value woul be unrelated to this call ) after asserting that this string is allowed. This technique 
+        protects the parser definition from having to introduce new keywords 
+            
